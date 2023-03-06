@@ -29,7 +29,6 @@ namespace kke {
         virtual void Render();
         virtual void Shutdown() {}
         virtual void ProcessInputs();
-    private:
 
         sf::RenderWindow window;
         sf::Clock clock;
