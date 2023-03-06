@@ -7,7 +7,8 @@
 namespace kke {
     Sprite::Sprite(const sf::Texture &texture) : sprite(texture) {
         sf::FloatRect bounds = sprite.getLocalBounds();
-        sprite.setOrigin(sf::Vector2(bounds.width / 2.f, bounds.height / 2.f));
+        //sprite.setOrigin(sf::Vector2(bounds.width / 2.f, bounds.height / 2.f));
+        sprite.setOrigin(sf::Vector2(0.f, 0.f));
     }
 
     void Sprite::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const {
