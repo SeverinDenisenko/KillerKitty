@@ -30,6 +30,8 @@ namespace kke {
 
     void Game::Update() {
         deltaTime = clock.restart();
+
+        root.update(deltaTime);
     }
 
     void Game::ProcessInputs() {
