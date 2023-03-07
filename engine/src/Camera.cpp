@@ -10,7 +10,7 @@ namespace kke {
     }
 
     void Camera::setSize(int width, int height) {
-        sf::View defaultView = window.getView();
+        sf::View defaultView = window.getDefaultView();
 
         float ratio = (float)width / (float)height;
         float currentWidth = defaultView.getSize().x;

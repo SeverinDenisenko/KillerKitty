@@ -13,7 +13,7 @@ namespace kke {
     void Game::Run() {
         Setup();
 
-        while (!sceneQueue.empty()){
+        while (!sceneQueue.empty() && window.isOpen()){
             sceneQueue.front()->Run();
             sceneQueue.pop();
         }

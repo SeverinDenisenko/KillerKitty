@@ -20,5 +20,4 @@ namespace kke{
     };
 }
 
-
 #endif //KILLERKITTY_COMMAND_H
