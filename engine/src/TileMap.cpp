@@ -35,14 +35,14 @@ namespace kke {
         vertices.setPrimitiveType(sf::Quads);
         vertices.resize(width * height * 4);
 
-        for (unsigned int i = 0; i < width; ++i)
+        for (unsigned int i = 0; i < width; ++i){
             for (unsigned int j = 0; j < height; ++j)
             {
                 // get the current tile number
                 int tileNumber = tiles[i + j * width];
                 Set(i, j, tileNumber);
             }
-
+        }
     }
 
     void TileMap::Resize(int w, int h) {

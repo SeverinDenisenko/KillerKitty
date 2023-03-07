@@ -14,7 +14,7 @@ namespace kke {
     template<typename T>
     class CommandQueue {
     public:
-        void push(const Command<T>& command);
+        void push(Command<T> command);
         Command<T> pop();
         bool isEmpty() const;
     private:
@@ -34,7 +34,7 @@ namespace kke {
     }
 
     template<typename T>
-    void CommandQueue<T>::push(const Command<T>& command) {
+    void CommandQueue<T>::push(Command<T> command) {
         queue.push(command);
     }
 

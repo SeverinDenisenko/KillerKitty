@@ -11,8 +11,8 @@ void KillerKitty::Setup() {
     kke::Game::Setup();
 
     sf::View defaultView = window.getView();
-    int width = 11 * 16;
-    int height = 7 * 16;
+    int width = 15 * 16;
+    int height = 12 * 16;
     float ratio = (float)width / (float)height;
     float currentWidth = defaultView.getSize().x;
     float currentHeight = defaultView.getSize().y;
@@ -45,23 +45,19 @@ void KillerKitty::ProcessInputs() {
 
     kke::Command<std::string> move;
     move.action = CharacterMover(0, 0);
+    move.category = "Player";
 
     if (eventSystem.IsKeyDown(sf::Keyboard::D)) {
-        move.category = "Player";
         move.action = CharacterMover(1, 0);
     }
     if (eventSystem.IsKeyDown(sf::Keyboard::A)) {
-        move.category = "Player";
         move.action = CharacterMover(-1, 0);
     }
     if (eventSystem.IsKeyDown(sf::Keyboard::W)) {
-        move.category = "Player";
         move.action = CharacterMover(0, -1);
     }
     if (eventSystem.IsKeyDown(sf::Keyboard::S)) {
-        move.category = "Player";
         move.action = CharacterMover(0, 1);
     }
-
     commandQueue.push(move);
 }
