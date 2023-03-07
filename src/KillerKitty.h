@@ -6,6 +6,9 @@
 #define KILLERKITTY_KILLERKITTY_H
 
 #include <Game.h>
+#include <Command.h>
+
+#include "CharacterMover.h"
 
 class KillerKitty : public kke::Game{
 public:
@@ -14,14 +17,7 @@ public:
 protected:
     void Setup() override;
 
-    void ProcessInputs() override{
-        kke::Game::ProcessInputs();
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-        {
-            Running = false;
-        }
-    }
+    void ProcessInputs() override;
 
     void Shutdown() override{
         kke::Game::Shutdown();

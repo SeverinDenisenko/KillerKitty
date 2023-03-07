@@ -4,6 +4,8 @@
 
 #include "Entity.h"
 
+#include <utility>
+
 namespace kke {
     void Entity::AttachChild(std::unique_ptr <Entity> child) {
         child->parent = this;
@@ -32,8 +34,8 @@ namespace kke {
 
         drawCurrent(target, states);
 
-        for (const auto & itr : children)
-            itr->draw(target, states);
+        for (const auto & child : children)
+            child->draw(target, states);
     }
 
     void Entity::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const {
@@ -47,8 +49,8 @@ namespace kke {
     void Entity::update(sf::Time dt) {
         updateCurrent(dt);
 
-        for (const auto & itr : children)
-            itr->update(dt);
+        for (const auto & child : children)
+            child->update(dt);
     }
 
     sf::Transform Entity::getWorldTransform() const {
@@ -62,5 +64,21 @@ namespace kke {
 
     sf::Vector2f Entity::getWorldPosition() const {
         return getWorldTransform() * sf::Vector2f();
+    }
+
+    std::string Entity::getCategory() {
+        return category;
+    }
+
+    void Entity::onCommand(const Command<std::string>& command, sf::Time dt) {
+        if (command.category == getCategory())
+            command.action(*this, dt);
+
+        for (const auto & child : children)
+            child->onCommand(command, dt);
+    }
+
+    void Entity::setCategory(std::string c) {
+        category = std::move(c);
     }
 } // kke

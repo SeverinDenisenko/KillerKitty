@@ -7,8 +7,6 @@
 #include <Sprite.h>
 #include <TileMap.h>
 
-#include "Character.h"
-
 void KillerKitty::Setup() {
     kke::Game::Setup();
 
@@ -28,10 +26,40 @@ void KillerKitty::Setup() {
             24, 26,25,25,25,25, 25, 26, 27,
             };
 
-    auto character = std::make_unique<Character>();
-    character->AttachChild(std::make_unique<kke::Sprite>(textures.get("tiles"), sf::IntRect(64, 32, 16, 16)));
+    auto character = std::make_unique<kke::Sprite>(textures.get("tiles"), sf::IntRect(64, 32, 16, 16));
+    character->setCategory("Player");
 
     root.AttachChild(std::make_unique<kke::TileMap>(textures.get("tiles"), 16, 16, level, 9, 7));
     root.AttachChild(std::move(character));
     root.setScale(4, 4);
+}
+
+void KillerKitty::ProcessInputs() {
+    kke::Game::ProcessInputs();
+
+    if (eventSystem.IsKeyPressed(sf::Keyboard::Escape)) {
+        Running = false;
+    }
+
+    kke::Command<std::string> move;
+    move.action = CharacterMover(0, 0);
+
+    if (eventSystem.IsKeyDown(sf::Keyboard::D)) {
+        move.category = "Player";
+        move.action = CharacterMover(1, 0);
+    }
+    if (eventSystem.IsKeyDown(sf::Keyboard::A)) {
+        move.category = "Player";
+        move.action = CharacterMover(-1, 0);
+    }
+    if (eventSystem.IsKeyDown(sf::Keyboard::W)) {
+        move.category = "Player";
+        move.action = CharacterMover(0, -1);
+    }
+    if (eventSystem.IsKeyDown(sf::Keyboard::S)) {
+        move.category = "Player";
+        move.action = CharacterMover(0, 1);
+    }
+
+    commandQueue.push(move);
 }

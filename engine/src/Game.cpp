@@ -6,7 +6,7 @@
 
 namespace kke {
     Game::Game(const std::string& name) : window(sf::VideoMode::getFullscreenModes()[0],
-                                                 name, sf::Style::Fullscreen) {
+                                                 name, sf::Style::Fullscreen), eventSystem(window) {
 
     }
 
@@ -14,7 +14,9 @@ namespace kke {
         Setup();
 
         while (Running && window.isOpen()){
+            eventSystem.Collect();
             ProcessInputs();
+            eventSystem.Clear();
             Update();
             window.clear();
             Render();
@@ -31,16 +33,13 @@ namespace kke {
     void Game::Update() {
         deltaTime = clock.restart();
 
+        while (!commandQueue.isEmpty())
+            root.onCommand(commandQueue.pop(), deltaTime);
+
         root.update(deltaTime);
     }
 
     void Game::ProcessInputs() {
-        sf::Event event{};
 
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
     }
 } // kke

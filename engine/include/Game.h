@@ -7,6 +7,8 @@
 
 #include "Entity.h"
 #include "ResourceHolder.h"
+#include "EventSystem.h"
+#include "CommandQueue.h"
 
 namespace kke {
 
@@ -18,6 +20,8 @@ namespace kke {
         void Run();
 
         ResourceHolder<sf::Texture, std::string> textures;
+        EventSystem eventSystem;
+        CommandQueue<std::string> commandQueue;
         Entity root;
         sf::Time deltaTime;
 
