@@ -9,6 +9,7 @@
 #include "ResourceHolder.h"
 #include "EventSystem.h"
 #include "CommandQueue.h"
+#include "Camera.h"
 
 namespace kke {
 
@@ -23,6 +24,7 @@ namespace kke {
         EventSystem eventSystem;
         CommandQueue<std::string> commandQueue;
         Entity root;
+        Camera camera;
         sf::Time deltaTime;
 
         bool Running = true;

@@ -10,22 +10,7 @@
 void KillerKitty::Setup() {
     kke::Game::Setup();
 
-    sf::View defaultView = window.getView();
-    int width = 15 * 16;
-    int height = 12 * 16;
-    float ratio = (float)width / (float)height;
-    float currentWidth = defaultView.getSize().x;
-    float currentHeight = defaultView.getSize().y;
-    float currentRatio = currentWidth / currentHeight;
-    sf::View view = sf::View(sf::FloatRect(0, 0, width, height));
-    if (currentRatio > ratio){
-        float offset = (1.f - (currentHeight * ratio) / currentWidth) / 2;
-        view.setViewport(sf::FloatRect(offset, 0, 1 - offset * 2, 1));
-    } else {
-        float offset = (1.f - currentWidth / (ratio * currentHeight)) / 2;
-        view.setViewport(sf::FloatRect(0, offset, 1, 1 - offset * 2));
-    }
-    window.setView(view);
+    camera.setSize(15 * 16, 12 * 16);
 
     textures.Load("tiles", "src/assets/tiles.png");
 

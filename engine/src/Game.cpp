@@ -6,7 +6,7 @@
 
 namespace kke {
     Game::Game(const std::string& name) : window(sf::VideoMode::getFullscreenModes()[0],
-                                                 name, sf::Style::Fullscreen), eventSystem(window) {
+                                                 name, sf::Style::Fullscreen), eventSystem(window), camera(window) {
 
     }
 
