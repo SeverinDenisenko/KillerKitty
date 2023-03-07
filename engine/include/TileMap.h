@@ -11,7 +11,7 @@ namespace kke {
 
     class TileMap : public Entity {
     public:
-        TileMap(sf::Texture& texture, int tileWidth, int tileHeight, const int* tiles, int width, int height);
+        TileMap(sf::Texture& texture, std::string filename);
 
         void Resize(int width, int height);
         void Set(unsigned int x, unsigned int y, unsigned int index);

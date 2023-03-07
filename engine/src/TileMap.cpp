@@ -4,6 +4,9 @@
 
 #include "TileMap.h"
 
+#include <nlohmann/json.hpp>
+#include <fstream>
+
 namespace kke {
     void TileMap::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {
         states.transform *= getTransform();
@@ -11,7 +14,24 @@ namespace kke {
         target.draw(vertices, states);
     }
 
-    TileMap::TileMap(sf::Texture& texture, int tileWidth, int tileHeight, const int* tiles, int width, int height) : texture(texture), tileWidth(tileWidth), tileHeight(tileHeight), width(width), height(height) {
+    TileMap::TileMap(sf::Texture& texture, std::string filename) : texture(texture){
+        std::ifstream file(filename);
+        nlohmann::json data = nlohmann::json::parse(file);
+
+        width = data["width"].get<int>();
+        height = data["height"].get<int>();
+
+        tileWidth = data["tilewidth"].get<int>();
+        tileHeight = data["tileheight"].get<int>();
+
+        std::vector<int> tiles;
+
+        for (auto& i: data["layers"]) {
+            for (auto& j: i["data"]) {
+                tiles.push_back(j.get<int>() - 1);
+            }
+        }
+
         vertices.setPrimitiveType(sf::Quads);
         vertices.resize(width * height * 4);
 
