@@ -5,39 +5,24 @@
 #ifndef KILLERKITTY_GAME_H
 #define KILLERKITTY_GAME_H
 
-#include "Entity.h"
-#include "ResourceHolder.h"
-#include "EventSystem.h"
-#include "CommandQueue.h"
-#include "Camera.h"
+#include "Scene.h"
 
 namespace kke {
 
     class Game {
     public:
-        Game(const std::string& name);
+        explicit Game(const std::string& name);
         virtual ~Game() = default;
 
         void Run();
 
-        ResourceHolder<sf::Texture, std::string> textures;
-        EventSystem eventSystem;
-        CommandQueue<std::string> commandQueue;
-        Entity root;
-        Camera camera;
-        sf::Time deltaTime;
-
-        bool Running = true;
-
     protected:
         virtual void Setup() {}
-        virtual void Update();
-        virtual void Render();
         virtual void Shutdown() {}
-        virtual void ProcessInputs();
+
+        std::queue<std::unique_ptr<Scene>> sceneQueue;
 
         sf::RenderWindow window;
-        sf::Clock clock;
     };
 
 } // kke

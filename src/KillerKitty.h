@@ -6,22 +6,21 @@
 #define KILLERKITTY_KILLERKITTY_H
 
 #include <Game.h>
-#include <Command.h>
-
-#include "CharacterMover.h"
+#include "TestScene.h"
 
 class KillerKitty : public kke::Game{
 public:
     KillerKitty() : kke::Game("Killer Kitty") {}
 
 protected:
-    void Setup() override;
+    void Setup() override{
+        kke::Game::Setup();
 
-    void ProcessInputs() override;
+        sceneQueue.push(std::make_unique<TestScene>(window));
+    }
 
     void Shutdown() override{
         kke::Game::Shutdown();
-
 
     }
 };
