@@ -8,26 +8,44 @@
 #include <Scene.h>
 #include <TileMap.h>
 #include <Sprite.h>
+#include <PhysicsEngine.h>
+#include <RigidBody.h>
 
 #include "CharacterMover.h"
+#include "box2d/b2_body.h"
+#include "box2d/b2_polygon_shape.h"
+#include "box2d/b2_fixture.h"
 
 class TestScene : public kke::Scene {
 public:
     explicit TestScene(sf::RenderWindow& renderWindow) : kke::Scene(renderWindow){}
 
+    kke::PhysicsEngine physicsEngine;
+
     void Construct() override{
         camera.setSize(15 * 16, 12 * 16);
 
+        // Music
         musicPlayer.Load("theme", "src/assets/music.mp3");
-        musicPlayer.Play("theme");
+        musicPlayer.volume = 50.f;
+        //musicPlayer.Play("theme");
 
+        auto body = std::make_unique<kke::RigidBody>(physicsEngine, true);
+
+        auto floor = std::make_unique<kke::RigidBody>(physicsEngine, false);
+        floor->setPosition(0.0f, 150.0f);
+        floor->setSize(50.0f, 10.0f);
+        root.AttachChild(std::move(floor));
+
+        // Load textures and setup world
         textureHolder.Load("tiles", "src/assets/tiles.png");
 
         auto character = std::make_unique<kke::Sprite>(textureHolder.get("tiles"), sf::IntRect(64, 32, 16, 16));
-        character->setCategory("Player");
+        body->setCategory("Player");
 
         root.AttachChild(std::make_unique<kke::TileMap>(textureHolder.get("tiles"), "src/assets/tilemap.tmj"));
-        root.AttachChild(std::move(character));
+        body->AttachChild(std::move(character));
+        root.AttachChild(std::move(body));
     }
 
     void ProcessInputs() override{
@@ -54,8 +72,8 @@ public:
         commandQueue.push(move);
     }
 
-    void Deconstruct() override{
-
+    void Update() override{
+        physicsEngine.Update(deltaTime);
     }
 };
 

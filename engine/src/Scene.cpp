@@ -21,6 +21,8 @@ namespace kke {
             // Update
             deltaTime = clock.restart();
 
+            Update();
+
             while (!commandQueue.isEmpty())
                 root.onCommand(commandQueue.pop(), deltaTime);
 

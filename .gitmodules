@@ -8,3 +8,6 @@
 [submodule "engine/deps/TGUI"]
 	path = engine/deps/TGUI
 	url = https://github.com/texus/TGUI.git
+[submodule "engine/deps/box2d"]
+	path = engine/deps/box2d
+	url = https://github.com/erincatto/box2d.git

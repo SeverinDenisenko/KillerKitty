@@ -7,6 +7,8 @@
 
 #include <Command.h>
 
+#include <RigidBody.h>
+
 class CharacterMover {
 public:
     CharacterMover(float vx, float vy)
@@ -16,8 +18,10 @@ public:
 
     void operator() (kke::Entity& node, sf::Time dt) const
     {
-        float distance = 0.00004f * (float)dt.asMicroseconds();
-        node.move(distance * vx, distance * vy);
+        auto rigidBody = dynamic_cast<kke::RigidBody*>(&node);
+        float multiplier = 100;
+        rigidBody->body->ApplyForceToCenter(b2Vec2(vx * multiplier, vy * multiplier), true);
+        //node.move(distance * vx, distance * vy);
     }
 
     float vx;
