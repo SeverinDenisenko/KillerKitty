@@ -11,7 +11,9 @@ namespace kke {
     void TileMap::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {
         states.transform *= getTransform();
         states.texture = &texture;
-        target.draw(vertices, states);
+        for (auto& i: vertices) {
+            target.draw(i, states);
+        }
     }
 
     TileMap::TileMap(sf::Texture& texture, std::string filename) : texture(texture){
@@ -24,23 +26,29 @@ namespace kke {
         tileWidth = data["tilewidth"].get<int>();
         tileHeight = data["tileheight"].get<int>();
 
-        std::vector<int> tiles;
+        std::vector<std::vector<int>> tiles;
 
+        unsigned int layer = 0;
         for (auto& i: data["layers"]) {
+            vertices.emplace_back();
+            vertices[layer].setPrimitiveType(sf::Quads);
+            vertices[layer].resize(width * height * 4);
+            tiles.emplace_back();
+
             for (auto& j: i["data"]) {
-                tiles.push_back(j.get<int>() - 1);
+                tiles[layer].push_back(j.get<int>() - 1);
             }
+            layer++;
         }
 
-        vertices.setPrimitiveType(sf::Quads);
-        vertices.resize(width * height * 4);
-
-        for (unsigned int i = 0; i < width; ++i){
-            for (unsigned int j = 0; j < height; ++j)
-            {
-                // get the current tile number
-                int tileNumber = tiles[i + j * width];
-                Set(i, j, tileNumber);
+        for(unsigned int l = 0; l < layer; ++l){
+            for (unsigned int i = 0; i < width; ++i){
+                for (unsigned int j = 0; j < height; ++j)
+                {
+                    // get the current tile number
+                    int tileNumber = tiles[l][i + j * width];
+                    Set(l, i, j, tileNumber);
+                }
             }
         }
     }
@@ -48,16 +56,21 @@ namespace kke {
     void TileMap::Resize(int w, int h) {
         width = w;
         height = h;
-        vertices.resize(width * height * 4);
+        for (auto& i: vertices) {
+            i.resize(width * height * 4);
+        }
     }
 
-    void TileMap::Set(unsigned int x, unsigned int y, unsigned int index) {
+    void TileMap::Set(unsigned int layer, unsigned int x, unsigned int y, int index) {
+        if (index < 0)
+            return;
+
         // find its position in the tileset texture
         int tu = index % (texture.getSize().x / tileWidth);
         int tv = index / (texture.getSize().x / tileWidth);
 
         // get a pointer to the current tile's quad
-        sf::Vertex* quad = &vertices[(x + y * width) * 4];
+        sf::Vertex* quad = &vertices[layer][(x + y * width) * 4];
 
         // define its 4 corners
         quad[0].position = sf::Vector2f(x * tileWidth, y * tileHeight);

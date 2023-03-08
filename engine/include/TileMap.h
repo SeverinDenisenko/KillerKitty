@@ -14,14 +14,14 @@ namespace kke {
         TileMap(sf::Texture& texture, std::string filename);
 
         void Resize(int width, int height);
-        void Set(unsigned int x, unsigned int y, unsigned int index);
+        void Set(unsigned int layer, unsigned int x, unsigned int y, int index);
 
     protected:
 
         void drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const override;
 
     private:
-        sf::VertexArray vertices;
+        std::vector<sf::VertexArray> vertices;
         sf::Texture& texture;
         int tileWidth;
         int tileHeight;
