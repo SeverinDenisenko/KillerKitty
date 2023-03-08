@@ -10,6 +10,7 @@
 #include "ResourceHolder.h"
 #include "EventSystem.h"
 #include "Camera.h"
+#include "MusicPlayer.h"
 
 #include <TGUI/Backend/SFML-Graphics.hpp>
 
@@ -35,6 +36,7 @@ namespace kke {
         EventSystem eventSystem;
         Camera camera;
         sf::Time deltaTime;
+        MusicPlayer musicPlayer;
 
         bool Running = true;
 

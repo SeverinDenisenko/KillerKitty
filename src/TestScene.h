@@ -18,6 +18,9 @@ public:
     void Construct() override{
         camera.setSize(15 * 16, 12 * 16);
 
+        musicPlayer.Load("theme", "src/assets/music.mp3");
+        musicPlayer.Play("theme");
+
         textureHolder.Load("tiles", "src/assets/tiles.png");
 
         auto character = std::make_unique<kke::Sprite>(textureHolder.get("tiles"), sf::IntRect(64, 32, 16, 16));
