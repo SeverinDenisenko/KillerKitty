@@ -11,6 +11,8 @@
 #include "EventSystem.h"
 #include "Camera.h"
 
+#include <TGUI/Backend/SFML-Graphics.hpp>
+
 namespace kke {
 
     class Scene {
@@ -36,8 +38,8 @@ namespace kke {
 
         bool Running = true;
 
-    private:
         sf::RenderWindow &window;
+        tgui::Gui gui;
         sf::Clock clock;
     };
 

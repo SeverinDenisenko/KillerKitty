@@ -13,7 +13,7 @@
 
 class TestScene : public kke::Scene {
 public:
-    explicit TestScene(sf::RenderWindow& renderWindow) : kke::Scene(renderWindow) {}
+    explicit TestScene(sf::RenderWindow& renderWindow) : kke::Scene(renderWindow){}
 
     void Construct() override{
         camera.setSize(15 * 16, 12 * 16);

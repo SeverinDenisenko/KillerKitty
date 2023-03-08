@@ -7,6 +7,7 @@
 
 #include <Game.h>
 #include "TestScene.h"
+#include "MainMenu.h"
 
 class KillerKitty : public kke::Game{
 public:
@@ -16,6 +17,7 @@ protected:
     void Setup() override{
         kke::Game::Setup();
 
+        sceneQueue.push(std::make_unique<MainMenu>(window));
         sceneQueue.push(std::make_unique<TestScene>(window));
     }
 

@@ -20,9 +20,9 @@ namespace kke {
         bool IsKeyDown(sf::Keyboard::Key key);
         void Clear();
 
-    private:
         std::vector<sf::Event> events;
 
+    private:
         sf::Window& window;
     };
 } // kke
