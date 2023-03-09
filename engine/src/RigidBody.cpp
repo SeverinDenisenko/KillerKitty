@@ -50,4 +50,8 @@ namespace kke {
         body->SetTransform(b2Vec2(p.x + x, p.y + y), a);
         body->SetAwake(true);
     }
+
+    void RigidBody::addImpulse(float x, float y) {
+        body->ApplyLinearImpulseToCenter(b2Vec2(x, y), true);
+    }
 } // kke

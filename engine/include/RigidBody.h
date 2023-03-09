@@ -22,14 +22,15 @@ namespace kke {
         void setPosition(float x, float y);
         void setSize(float x, float y);
         void move(float x, float y);
+        void addImpulse(float x, float y);
 
+    private:
         b2PolygonShape dynamicBox;
         b2BodyDef bodyDef;
         b2Body* body;
         b2FixtureDef fixtureDef;
         b2Fixture* fixture;
 
-    private:
         PhysicsEngine& physicsEngine;
     };
 
