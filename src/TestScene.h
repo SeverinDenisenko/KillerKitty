@@ -12,6 +12,7 @@
 #include <RigidBody.h>
 
 #include "CharacterMover.h"
+#include "Character.h"
 
 class TestScene : public kke::Scene {
 public:
@@ -23,10 +24,6 @@ public:
         camera.setSize(15 * 16, 12 * 16);
 
         physicsEngine.timeMultiplier = 8;
-        auto body = std::make_unique<kke::RigidBody>(physicsEngine, true);
-        body->setCategory("Player");
-        body->setPosition(1.0f, 1.0f);
-        body->setSize(16.0f, 16.0f);
 
         auto floor = std::make_unique<kke::RigidBody>(physicsEngine, false);
         floor->setPosition(0, 12 * 16);
@@ -46,11 +43,15 @@ public:
         // Load textures and setup world
         textureHolder.Load("tiles", "src/assets/tiles.png");
 
-        auto character = std::make_unique<kke::Sprite>(textureHolder.get("tiles"), sf::IntRect(64, 32, 16, 16));
-
         root.AttachChild(std::make_unique<kke::TileMap>(textureHolder.get("tiles"), "src/assets/tilemap.tmj"));
-        body->AttachChild(std::move(character));
-        root.AttachChild(std::move(body));
+
+        auto character = std::make_unique<Character>(physicsEngine, textureHolder.get("tiles"), sf::IntRect(64, 32, 16, 16));
+
+        character->setCategory("Player");
+        character->setPosition(1.0f, 1.0f);
+        character->setSize(16.0f, 16.0f);
+
+        root.AttachChild(std::move(character));
     }
 
     void ProcessInputs() override{

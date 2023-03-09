@@ -9,12 +9,12 @@
 
 namespace kke {
 
-    class Sprite : public Entity{
+    class Sprite : virtual public Entity{
     public:
         explicit Sprite(const sf::Texture& texture);
         Sprite(const sf::Texture& texture, const sf::IntRect& rect);
 
-    private:
+    protected:
         void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const override;
 
         sf::Sprite sprite;

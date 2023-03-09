@@ -54,4 +54,8 @@ namespace kke {
     void RigidBody::addImpulse(float x, float y) {
         body->ApplyLinearImpulseToCenter(b2Vec2(x, y), true);
     }
+
+    void RigidBody::onCollision(RigidBody* other) {
+
+    }
 } // kke

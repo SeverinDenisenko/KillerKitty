@@ -13,7 +13,7 @@
 
 namespace kke {
 
-    class RigidBody : public Entity{
+    class RigidBody : virtual public Entity{
     public:
         explicit RigidBody(PhysicsEngine& physicsEngine, bool dynamic);
 
@@ -23,6 +23,10 @@ namespace kke {
         void setSize(float x, float y);
         void move(float x, float y);
         void addImpulse(float x, float y);
+
+        bool checkForCollisions = true;
+
+        virtual void onCollision(RigidBody* other);
 
     private:
         b2PolygonShape dynamicBox;
