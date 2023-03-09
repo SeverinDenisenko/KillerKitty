@@ -19,7 +19,7 @@ public:
     void operator() (kke::Entity& node, sf::Time dt) const
     {
         auto rigidBody = dynamic_cast<kke::RigidBody*>(&node);
-        float multiplier = dt.asMicroseconds() / 100000.f;
+        float multiplier = dt.asMicroseconds() / 10000.f;
         rigidBody->move(multiplier * vx, 0);
         rigidBody->body->ApplyLinearImpulseToCenter(b2Vec2(0, vy * 100), true);
     }

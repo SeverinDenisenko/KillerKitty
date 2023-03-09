@@ -22,25 +22,31 @@ public:
     void Construct() override{
         camera.setSize(15 * 16, 12 * 16);
 
-        // Music
-        musicPlayer.Load("theme", "src/assets/music.mp3");
-        musicPlayer.volume = 50.f;
-        //musicPlayer.Play("theme");
-
+        physicsEngine.timeMultiplier = 8;
         auto body = std::make_unique<kke::RigidBody>(physicsEngine, true);
-        body->setPosition(0.0f, 0.0f);
-        body->setSize(1.0f, 1.0f);
+        body->setCategory("Player");
+        body->setPosition(1.0f, 1.0f);
+        body->setSize(16.0f, 16.0f);
 
         auto floor = std::make_unique<kke::RigidBody>(physicsEngine, false);
-        floor->setPosition(0.0f, 150.0f);
-        floor->setSize(50.0f, 10.0f);
+        floor->setPosition(0, 12 * 16);
+        floor->setSize(15 * 16 * 2, 0);
         root.AttachChild(std::move(floor));
+
+        auto wall1 = std::make_unique<kke::RigidBody>(physicsEngine, false);
+        wall1->setPosition(-16, 0);
+        wall1->setSize(0, 12 * 16);
+        root.AttachChild(std::move(wall1));
+
+        auto wall2 = std::make_unique<kke::RigidBody>(physicsEngine, false);
+        wall2->setPosition(15 * 16, 0);
+        wall2->setSize(0, 12 * 16);
+        root.AttachChild(std::move(wall2));
 
         // Load textures and setup world
         textureHolder.Load("tiles", "src/assets/tiles.png");
 
         auto character = std::make_unique<kke::Sprite>(textureHolder.get("tiles"), sf::IntRect(64, 32, 16, 16));
-        body->setCategory("Player");
 
         root.AttachChild(std::make_unique<kke::TileMap>(textureHolder.get("tiles"), "src/assets/tilemap.tmj"));
         body->AttachChild(std::move(character));
@@ -52,20 +58,30 @@ public:
             Running = false;
         }
 
+        float up = 0;
+        float right = 0;
+        bool send = false;
+
         kke::Command<std::string> move;
-        move.action = CharacterMover(0, 0);
         move.category = "Player";
 
         if (eventSystem.IsKeyDown(sf::Keyboard::D)) {
-            move.action = CharacterMover(1, 0);
+            right = 1;
+            send = true;
         }
         if (eventSystem.IsKeyDown(sf::Keyboard::A)) {
-            move.action = CharacterMover(-1, 0);
+            right = -1;
+            send = true;
         }
         if (eventSystem.IsKeyPressed(sf::Keyboard::Space)) {
-            move.action = CharacterMover(0, -1);
+            up = 1;
+            send = true;
         }
-        commandQueue.push(move);
+
+        move.action = CharacterMover(right, -200 * up);
+
+        if (send)
+            commandQueue.push(std::move(move));
     }
 
     void Update() override{

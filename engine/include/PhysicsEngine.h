@@ -18,6 +18,7 @@ namespace kke {
 
         int velocityIterations = 6;
         int positionIterations = 2;
+        float timeMultiplier = 1.f;
 
         b2World world;
     };

@@ -10,6 +10,6 @@ namespace kke {
     }
 
     void PhysicsEngine::Update(sf::Time deltaTime) {
-        world.Step((float)deltaTime.asMicroseconds() / 1000000.f, velocityIterations, positionIterations);
+        world.Step((float)deltaTime.asMicroseconds() / 1000000.f * timeMultiplier, velocityIterations, positionIterations);
     }
 } // kke
