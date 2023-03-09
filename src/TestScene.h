@@ -28,6 +28,8 @@ public:
         //musicPlayer.Play("theme");
 
         auto body = std::make_unique<kke::RigidBody>(physicsEngine, true);
+        body->setPosition(0.0f, 0.0f);
+        body->setSize(1.0f, 1.0f);
 
         auto floor = std::make_unique<kke::RigidBody>(physicsEngine, false);
         floor->setPosition(0.0f, 150.0f);

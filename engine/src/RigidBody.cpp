@@ -9,7 +9,6 @@ namespace kke {
         dynamicBox.SetAsBox(1.0f, 1.0f);
         if (dynamic)
             bodyDef.type = b2_dynamicBody;
-        bodyDef.position.Set(0.0f, 4.0f);
         body = physicsEngine.world.CreateBody(&bodyDef);
 
         fixtureDef.shape = &dynamicBox;
