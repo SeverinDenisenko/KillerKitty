@@ -21,6 +21,7 @@ namespace kke {
 
         void setPosition(float x, float y);
         void setSize(float x, float y);
+        void move(float x, float y);
 
         b2PolygonShape dynamicBox;
         b2BodyDef bodyDef;

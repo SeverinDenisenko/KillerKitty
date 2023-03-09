@@ -12,9 +12,6 @@
 #include <RigidBody.h>
 
 #include "CharacterMover.h"
-#include "box2d/b2_body.h"
-#include "box2d/b2_polygon_shape.h"
-#include "box2d/b2_fixture.h"
 
 class TestScene : public kke::Scene {
 public:
@@ -63,11 +60,8 @@ public:
         if (eventSystem.IsKeyDown(sf::Keyboard::A)) {
             move.action = CharacterMover(-1, 0);
         }
-        if (eventSystem.IsKeyDown(sf::Keyboard::W)) {
+        if (eventSystem.IsKeyPressed(sf::Keyboard::Space)) {
             move.action = CharacterMover(0, -1);
-        }
-        if (eventSystem.IsKeyDown(sf::Keyboard::S)) {
-            move.action = CharacterMover(0, 1);
         }
         commandQueue.push(move);
     }

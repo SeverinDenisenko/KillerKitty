@@ -30,6 +30,8 @@ namespace kke {
         auto a = body->GetAngle();
 
         body->SetTransform(b2Vec2(x, y), a);
+
+        body->SetAwake(true);
     }
 
     void RigidBody::setSize(float x, float y) {
@@ -37,5 +39,16 @@ namespace kke {
         dynamicBox.SetAsBox(x, y);
         fixtureDef.shape = &dynamicBox;
         fixture = body->CreateFixture(&fixtureDef);
+        body->SetAwake(true);
+    }
+
+    void RigidBody::move(float x, float y) {
+        //Transformable::move(x, y);
+
+        auto p = body->GetPosition();
+        auto a = body->GetAngle();
+
+        body->SetTransform(b2Vec2(p.x + x, p.y + y), a);
+        body->SetAwake(true);
     }
 } // kke
