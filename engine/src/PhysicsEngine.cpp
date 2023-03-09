@@ -11,9 +11,24 @@ namespace kke {
 
     void PhysicsEngine::Update(sf::Time deltaTime) {
         world.Step((float)deltaTime.asMicroseconds() / 1000000.f * timeMultiplier, velocityIterations, positionIterations);
+
+        for (auto i: bodies) {
+            for (auto j: bodies) {
+                if(i == j)
+                    continue;
+
+                bool collided = b2TestOverlap(i->shape, 0, j->shape, 0, i->body->GetTransform(), j->body->GetTransform());
+
+                if (collided){
+                    i->onCollision(j);
+                    j->onCollision(i);
+                }
+            }
+        }
     }
 
     void PhysicsEngine::RegisterBody(RigidBody& rigidBody) {
         rigidBody.body = world.CreateBody(&rigidBody.bodyDef);
+        bodies.emplace_back(&rigidBody);
     }
 } // kke

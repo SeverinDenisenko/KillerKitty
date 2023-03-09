@@ -31,7 +31,7 @@ namespace kke {
 
         friend class PhysicsEngine;
     private:
-        b2PolygonShape dynamicBox;
+        b2Shape *shape;
         b2BodyDef bodyDef;
         b2Body* body;
         b2FixtureDef fixtureDef;

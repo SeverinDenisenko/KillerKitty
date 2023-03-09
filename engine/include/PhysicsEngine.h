@@ -28,6 +28,7 @@ namespace kke {
 
     private:
         b2World world;
+        std::vector<RigidBody*> bodies;
     };
 
 } // kke

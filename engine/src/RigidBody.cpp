@@ -6,13 +6,16 @@
 
 namespace kke {
     RigidBody::RigidBody(PhysicsEngine& physicsEngine, bool dynamic) : physicsEngine(physicsEngine) {
-        dynamicBox.SetAsBox(1.0f, 1.0f);
+        b2PolygonShape* polygonShape = new b2PolygonShape();
+        polygonShape->SetAsBox(1.0f, 1.0f);
+        shape = polygonShape;
+
         if (dynamic)
             bodyDef.type = b2_dynamicBody;
 
         physicsEngine.RegisterBody(*this);
 
-        fixtureDef.shape = &dynamicBox;
+        fixtureDef.shape = shape;
         fixtureDef.density = 1.0f;
         fixtureDef.friction = 0.3f;
         fixture = body->CreateFixture(&fixtureDef);
@@ -36,8 +39,8 @@ namespace kke {
 
     void RigidBody::setSize(float x, float y) {
         body->DestroyFixture(fixture);
-        dynamicBox.SetAsBox(x, y);
-        fixtureDef.shape = &dynamicBox;
+        dynamic_cast<b2PolygonShape*>(shape)->SetAsBox(x, y);
+        fixtureDef.shape = shape;
         fixture = body->CreateFixture(&fixtureDef);
         body->SetAwake(true);
     }
