@@ -10,8 +10,14 @@
 
 class Character : public kke::RigidBody, public kke::Sprite{
 public:
-    Character(kke::PhysicsEngine& engine, const sf::Texture& texture) : kke::RigidBody(engine, true), kke::Sprite(texture) {}
-    Character(kke::PhysicsEngine& engine, const sf::Texture& texture, sf::IntRect rect) : kke::RigidBody(engine, true), kke::Sprite(texture, rect) {}
+    bool collided = false;
+
+    Character(kke::PhysicsEngine& engine, const sf::Texture& texture) : kke::RigidBody(engine, true), kke::Sprite(texture) {
+        checkForCollisions = true;
+    }
+    Character(kke::PhysicsEngine& engine, const sf::Texture& texture, sf::IntRect rect) : kke::RigidBody(engine, true), kke::Sprite(texture, rect) {
+        checkForCollisions = true;
+    }
 
     void updateCurrent(sf::Time dt) override{
         kke::RigidBody::updateCurrent(dt);
@@ -19,6 +25,11 @@ public:
 
     void drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const override{
         kke::Sprite::drawCurrent(target, states);
+    }
+
+    void onCollision(RigidBody *other) override{
+        if (other->getCategory() == "Floor")
+            collided = true;
     }
 };
 

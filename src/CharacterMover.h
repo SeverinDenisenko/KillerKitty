@@ -7,7 +7,7 @@
 
 #include <Command.h>
 
-#include <RigidBody.h>
+#include "Character.h"
 
 class CharacterMover {
 public:
@@ -18,10 +18,15 @@ public:
 
     void operator() (kke::Entity& node, sf::Time dt) const
     {
-        auto rigidBody = dynamic_cast<kke::RigidBody*>(&node);
+        auto character = dynamic_cast<Character*>(&node);
+
         float multiplier = dt.asMicroseconds() / 10000.f;
-        rigidBody->move(multiplier * vx, 0);
-        rigidBody->addImpulse(0, vy * 100);
+
+        character->move(multiplier * vx, 0);
+        if (character->collided){
+            character->addImpulse(0, vy * 100);
+            character->collided = false;
+        }
     }
 
     float vx;

@@ -28,6 +28,8 @@ public:
         auto floor = std::make_unique<kke::RigidBody>(physicsEngine, false);
         floor->setPosition(0, 12 * 16);
         floor->setSize(15 * 16 * 2, 0);
+        floor->setCategory("Floor");
+        floor->checkForCollisions = true;
         root.AttachChild(std::move(floor));
 
         auto wall1 = std::make_unique<kke::RigidBody>(physicsEngine, false);

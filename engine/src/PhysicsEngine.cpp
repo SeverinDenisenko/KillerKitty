@@ -12,4 +12,8 @@ namespace kke {
     void PhysicsEngine::Update(sf::Time deltaTime) {
         world.Step((float)deltaTime.asMicroseconds() / 1000000.f * timeMultiplier, velocityIterations, positionIterations);
     }
+
+    void PhysicsEngine::RegisterBody(RigidBody& rigidBody) {
+        rigidBody.body = world.CreateBody(&rigidBody.bodyDef);
+    }
 } // kke

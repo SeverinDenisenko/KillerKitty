@@ -8,7 +8,11 @@
 #include <box2d/b2_world.h>
 #include "SFML/System.hpp"
 
+#include "RigidBody.h"
+
 namespace kke {
+
+    class RigidBody;
 
     class PhysicsEngine {
     public:
@@ -20,6 +24,9 @@ namespace kke {
         int positionIterations = 2;
         float timeMultiplier = 1.f;
 
+        void RegisterBody(RigidBody& rigidBody);
+
+    private:
         b2World world;
     };
 
