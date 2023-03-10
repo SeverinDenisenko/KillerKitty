@@ -6,9 +6,7 @@
 #define KILLERKITTY_MAINMENU_H
 
 #include <Scene.h>
-
-#include "TGUI/Widgets/Button.hpp"
-#include "TGUI/Widgets/EditBox.hpp"
+#include <Button.h>
 
 class MainMenu : public kke::Scene{
 public:
@@ -17,11 +15,7 @@ public:
     void Construct() override{
         camera.setSize(15 * 16, 12 * 16);
 
-        auto button = tgui::Button::create();
-        button->setText("Hello!");
-        button->setSize("30%", "10%");
-        button->getRenderer()->setBackgroundColor(sf::Color(255, 0, 0, 255));
-        gui.add(button);
+        root.AttachChild(std::unique_ptr<kke::Button>(new kke::Button(0.f, 0.f, 100.f, 100.f, ui)));
     }
 
     void ProcessInputs() override{

@@ -11,8 +11,7 @@
 #include "EventSystem.h"
 #include "Camera.h"
 #include "MusicPlayer.h"
-
-#include <TGUI/Backend/SFML-Graphics.hpp>
+#include "UI.h"
 
 namespace kke {
 
@@ -35,13 +34,13 @@ namespace kke {
         ResourceHolder<sf::Texture, std::string> textureHolder;
         EventSystem eventSystem;
         Camera camera;
-        sf::Time deltaTime;
         MusicPlayer musicPlayer;
+        UI ui;
 
         bool Running = true;
 
+        sf::Time deltaTime;
         sf::RenderWindow &window;
-        tgui::Gui gui;
         sf::Clock clock;
     };
 

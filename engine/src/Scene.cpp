@@ -12,10 +12,7 @@ namespace kke {
             // Inputs
             eventSystem.Collect();
             ProcessInputs();
-
-            for (auto& i : eventSystem.events)
-                gui.handleEvent(i);
-
+            ui.ProcessEvents(eventSystem);
             eventSystem.Clear();
 
             // Update
@@ -31,14 +28,14 @@ namespace kke {
             // Render
             window.clear();
             window.draw(root);
-            gui.draw();
+            ui.Render();
             window.display();
         }
 
         Deconstruct();
     }
 
-    Scene::Scene(sf::RenderWindow& window) : window(window), eventSystem(window), camera(window), gui(window) {
+    Scene::Scene(sf::RenderWindow& window) : window(window), eventSystem(window), camera(window), ui(window) {
 
     }
 } // kke
