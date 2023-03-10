@@ -9,6 +9,7 @@ namespace kke {
         b2PolygonShape* polygonShape = new b2PolygonShape();
         polygonShape->SetAsBox(1.0f, 1.0f);
         shape = polygonShape;
+        bodyDef.fixedRotation = true;
 
         if (dynamic)
             bodyDef.type = b2_dynamicBody;

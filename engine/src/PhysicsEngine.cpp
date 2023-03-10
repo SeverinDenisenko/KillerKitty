@@ -21,7 +21,6 @@ namespace kke {
 
                 if (collided){
                     i->onCollision(j);
-                    j->onCollision(i);
                 }
             }
         }

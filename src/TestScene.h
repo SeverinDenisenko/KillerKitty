@@ -26,11 +26,32 @@ public:
         physicsEngine.timeMultiplier = 8;
 
         auto floor = std::make_unique<kke::RigidBody>(physicsEngine, false);
-        floor->setPosition(0, 12 * 16);
-        floor->setSize(15 * 16 * 2, 0);
+        floor->setPosition(0, 11 * 16);
+        floor->setSize(6 * 16, 16);
         floor->setCategory("Floor");
         floor->checkForCollisions = true;
         root.AttachChild(std::move(floor));
+
+        auto floor2 = std::make_unique<kke::RigidBody>(physicsEngine, false);
+        floor2->setPosition(0, 12 * 16);
+        floor2->setSize(15 * 16, 16);
+        floor2->setCategory("Floor");
+        floor2->checkForCollisions = true;
+        root.AttachChild(std::move(floor2));
+
+        auto floor3 = std::make_unique<kke::RigidBody>(physicsEngine, false);
+        floor3->setPosition(16 * 16, 11 * 16);
+        floor3->setSize(6 * 16, 16);
+        floor3->setCategory("Floor");
+        floor3->checkForCollisions = true;
+        root.AttachChild(std::move(floor3));
+
+        auto floor4 = std::make_unique<kke::RigidBody>(physicsEngine, false);
+        floor4->setPosition(17 * 16, 10 * 16);
+        floor4->setSize(6 * 16, 16);
+        floor4->setCategory("Floor");
+        floor4->checkForCollisions = true;
+        root.AttachChild(std::move(floor4));
 
         auto wall1 = std::make_unique<kke::RigidBody>(physicsEngine, false);
         wall1->setPosition(-16, 0);
@@ -63,6 +84,7 @@ public:
 
         float up = 0;
         float right = 0;
+        float left = 0;
         bool send = false;
 
         kke::Command<std::string> move;
@@ -73,7 +95,7 @@ public:
             send = true;
         }
         if (eventSystem.IsKeyDown(sf::Keyboard::A)) {
-            right = -1;
+            left = -1;
             send = true;
         }
         if (eventSystem.IsKeyPressed(sf::Keyboard::Space)) {
@@ -81,7 +103,7 @@ public:
             send = true;
         }
 
-        move.action = CharacterMover(right, -200 * up);
+        move.action = CharacterMover(right + left, -200 * up);
 
         if (send)
             commandQueue.push(std::move(move));
