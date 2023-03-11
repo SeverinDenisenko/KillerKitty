@@ -20,7 +20,7 @@ public:
     {
         auto character = dynamic_cast<Character*>(&node);
 
-        float multiplier = dt.asMicroseconds() / 10000.f;
+        auto multiplier = (float)dt.asMicroseconds() / 10000.f;
 
         character->move(multiplier * vx, 0);
         if (character->collided){

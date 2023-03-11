@@ -2,7 +2,7 @@
 // Created by Severin on 10.03.2023.
 //
 
-#include "engine/Entities/Button.h"
+#include "engine/UI/Button.h"
 
 namespace kke {
     Button::Button(float x, float y, float w, float h, UI& ui) {

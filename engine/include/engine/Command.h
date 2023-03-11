@@ -7,7 +7,7 @@
 
 #include <functional>
 
-#include "Entity.h"
+#include "engine/Entities/Entity.h"
 
 namespace kke{
     class Entity;

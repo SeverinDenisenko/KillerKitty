@@ -6,7 +6,7 @@
 #define KILLERKITTY_MAINMENU_H
 
 #include "engine/Scene.h"
-#include "engine/Entities/Button.h"
+#include "engine/UI/Button.h"
 
 #include "TestScene.h"
 

@@ -6,7 +6,7 @@
 #define KILLERKITTY_UI_H
 
 #include "EventSystem.h"
-#include "engine/Entities/Button.h"
+#include "engine/UI/Button.h"
 
 #include "TGUI/Backend/SFML-Graphics.hpp"
 

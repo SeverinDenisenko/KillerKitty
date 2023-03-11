@@ -5,7 +5,7 @@
 #ifndef KILLERKITTY_RIGIDBODY_H
 #define KILLERKITTY_RIGIDBODY_H
 
-#include "engine/Entity.h"
+#include "Entity.h"
 #include "engine/PhysicsEngine.h"
 #include "box2d/b2_polygon_shape.h"
 #include "box2d/b2_body.h"

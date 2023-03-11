@@ -5,7 +5,7 @@
 #ifndef KILLERKITTY_SPRITE_H
 #define KILLERKITTY_SPRITE_H
 
-#include "Entity.h"
+#include "engine/Entities/Entity.h"
 
 namespace kke {
 

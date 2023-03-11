@@ -5,7 +5,7 @@
 #ifndef KILLERKITTY_BUTTON_H
 #define KILLERKITTY_BUTTON_H
 
-#include "engine/Entity.h"
+#include "engine/Entities/Entity.h"
 #include "engine/UI.h"
 
 #include "TGUI/Widgets/Button.hpp"

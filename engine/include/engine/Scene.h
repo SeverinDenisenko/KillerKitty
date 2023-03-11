@@ -5,7 +5,7 @@
 #ifndef KILLERKITTY_SCENE_H
 #define KILLERKITTY_SCENE_H
 
-#include "Entity.h"
+#include "engine/Entities/Entity.h"
 #include "CommandQueue.h"
 #include "ResourceHolder.h"
 #include "EventSystem.h"

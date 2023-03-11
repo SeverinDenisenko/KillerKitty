@@ -9,7 +9,7 @@
 #include "SFML/System.hpp"
 #include "SFML/Graphics.hpp"
 
-#include "Command.h"
+#include "engine/Command.h"
 
 namespace kke {
 
