@@ -5,7 +5,7 @@
 #ifndef KILLERKITTY_CAMERA_H
 #define KILLERKITTY_CAMERA_H
 
-#include <SFML/Graphics.hpp>
+#include "SFML/Graphics.hpp"
 
 namespace kke {
 

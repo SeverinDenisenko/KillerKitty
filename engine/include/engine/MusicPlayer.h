@@ -5,8 +5,8 @@
 #ifndef KILLERKITTY_MUSICPLAYER_H
 #define KILLERKITTY_MUSICPLAYER_H
 
-#include <SFML/System.hpp>
-#include <SFML/Audio.hpp>
+#include "SFML/System.hpp"
+#include "SFML/Audio.hpp"
 
 #include <map>
 

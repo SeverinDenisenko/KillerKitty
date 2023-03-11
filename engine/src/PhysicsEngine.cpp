@@ -2,7 +2,7 @@
 // Created by Severin on 08.03.2023.
 //
 
-#include "PhysicsEngine.h"
+#include "engine/PhysicsEngine.h"
 
 namespace kke {
     PhysicsEngine::PhysicsEngine(): world(b2Vec2(0.0f, 10.0f)) {

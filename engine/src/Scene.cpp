@@ -2,7 +2,7 @@
 // Created by Severin on 07.03.2023.
 //
 
-#include "Scene.h"
+#include "engine/Scene.h"
 
 namespace kke {
     void Scene::Run() {

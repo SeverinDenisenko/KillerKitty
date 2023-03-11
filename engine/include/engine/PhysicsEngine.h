@@ -5,10 +5,10 @@
 #ifndef KILLERKITTY_PHYSICSENGINE_H
 #define KILLERKITTY_PHYSICSENGINE_H
 
-#include <box2d/b2_world.h>
+#include "box2d/b2_world.h"
 #include "SFML/System.hpp"
 
-#include "RigidBody.h"
+#include "engine/Entities/RigidBody.h"
 
 namespace kke {
 

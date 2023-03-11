@@ -2,9 +2,9 @@
 // Created by Severin on 06.03.2023.
 //
 
-#include "TileMap.h"
+#include "engine/Entities/TileMap.h"
 
-#include <nlohmann/json.hpp>
+#include "nlohmann/json.hpp"
 #include <fstream>
 
 namespace kke {

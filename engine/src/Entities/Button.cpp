@@ -2,7 +2,7 @@
 // Created by Severin on 10.03.2023.
 //
 
-#include "Button.h"
+#include "engine/Entities/Button.h"
 
 namespace kke {
     Button::Button(float x, float y, float w, float h, UI& ui) {
@@ -12,5 +12,9 @@ namespace kke {
         element->getRenderer()->setBackgroundColor(sf::Color(255, 255, 255, 255));
 
         ui.Register(*this);
+    }
+
+    void Button::onPress() {
+
     }
 } // kke

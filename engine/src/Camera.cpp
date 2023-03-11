@@ -2,7 +2,7 @@
 // Created by Severin on 07.03.2023.
 //
 
-#include "Camera.h"
+#include "engine/Camera.h"
 
 namespace kke {
     Camera::Camera(sf::RenderWindow& window) : window(window) {

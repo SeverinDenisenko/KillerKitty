@@ -5,8 +5,8 @@
 #ifndef KILLERKITTY_CHARACTER_H
 #define KILLERKITTY_CHARACTER_H
 
-#include <RigidBody.h>
-#include <Sprite.h>
+#include "engine/Entities/RigidBody.h"
+#include "engine/Sprite.h"
 
 class Character : public kke::RigidBody, public kke::Sprite{
 public:

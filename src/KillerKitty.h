@@ -5,7 +5,7 @@
 #ifndef KILLERKITTY_KILLERKITTY_H
 #define KILLERKITTY_KILLERKITTY_H
 
-#include <Game.h>
+#include "engine/Game.h"
 #include "TestScene.h"
 #include "MainMenu.h"
 

@@ -5,8 +5,10 @@
 #ifndef KILLERKITTY_MAINMENU_H
 #define KILLERKITTY_MAINMENU_H
 
-#include <Scene.h>
-#include <Button.h>
+#include "engine/Scene.h"
+#include "engine/Entities/Button.h"
+
+#include <memory>
 
 class MainMenu : public kke::Scene{
 public:
@@ -15,7 +17,7 @@ public:
     void Construct() override{
         camera.setSize(15 * 16, 12 * 16);
 
-        root.AttachChild(std::unique_ptr<kke::Button>(new kke::Button(0.f, 0.f, 100.f, 100.f, ui)));
+        root.AttachChild(std::make_unique<kke::Button>(0.f, 0.f, 100.f, 100.f, ui));
     }
 
     void ProcessInputs() override{

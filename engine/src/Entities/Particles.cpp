@@ -2,7 +2,7 @@
 // Created by Severin on 06.03.2023.
 //
 
-#include "Particles.h"
+#include "engine/Entities/Particles.h"
 
 #include <cmath>
 

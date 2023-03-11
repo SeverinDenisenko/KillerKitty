@@ -2,7 +2,7 @@
 // Created by Severin on 08.03.2023.
 //
 
-#include "RigidBody.h"
+#include "engine/Entities/RigidBody.h"
 
 namespace kke {
     RigidBody::RigidBody(PhysicsEngine& physicsEngine, bool dynamic) : physicsEngine(physicsEngine) {

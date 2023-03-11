@@ -6,10 +6,10 @@
 #define KILLERKITTY_ENTITY_H
 
 #include <vector>
-#include <SFML/System.hpp>
-#include <SFML/Graphics.hpp>
+#include "SFML/System.hpp"
+#include "SFML/Graphics.hpp"
 
-#include <Command.h>
+#include "Command.h"
 
 namespace kke {
 

@@ -6,9 +6,9 @@
 #define KILLERKITTY_UI_H
 
 #include "EventSystem.h"
-#include "Button.h"
+#include "engine/Entities/Button.h"
 
-#include <TGUI/Backend/SFML-Graphics.hpp>
+#include "TGUI/Backend/SFML-Graphics.hpp"
 
 namespace kke {
 

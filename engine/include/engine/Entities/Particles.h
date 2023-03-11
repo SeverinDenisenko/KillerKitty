@@ -5,7 +5,7 @@
 #ifndef KILLERKITTY_PARTICLES_H
 #define KILLERKITTY_PARTICLES_H
 
-#include "Entity.h"
+#include "engine/Entity.h"
 
 namespace kke {
 

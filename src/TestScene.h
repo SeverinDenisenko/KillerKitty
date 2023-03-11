@@ -5,11 +5,11 @@
 #ifndef KILLERKITTY_TESTSCENE_H
 #define KILLERKITTY_TESTSCENE_H
 
-#include <Scene.h>
-#include <TileMap.h>
-#include <Sprite.h>
-#include <PhysicsEngine.h>
-#include <RigidBody.h>
+#include "engine/Scene.h"
+#include "engine/Entities/TileMap.h"
+#include "engine/Sprite.h"
+#include "engine/PhysicsEngine.h"
+#include "engine/Entities/RigidBody.h"
 
 #include "CharacterMover.h"
 #include "Character.h"

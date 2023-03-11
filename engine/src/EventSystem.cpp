@@ -2,7 +2,7 @@
 // Created by Severin on 06.03.2023.
 //
 
-#include "EventSystem.h"
+#include "engine/EventSystem.h"
 
 namespace kke {
     void EventSystem::Collect() {

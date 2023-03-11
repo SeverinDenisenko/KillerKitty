@@ -5,7 +5,7 @@
 #ifndef KILLERKITTY_CHARACTERMOVER_H
 #define KILLERKITTY_CHARACTERMOVER_H
 
-#include <Command.h>
+#include "engine/Command.h"
 
 #include "Character.h"
 

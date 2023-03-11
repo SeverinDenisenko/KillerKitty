@@ -6,7 +6,7 @@
 #define KILLERKITTY_EVENTSYSTEM_H
 
 #include <vector>
-#include <SFML/Window.hpp>
+#include "SFML/Window.hpp"
 
 namespace kke {
 

@@ -2,7 +2,7 @@
 // Created by Severin on 06.03.2023.
 //
 
-#include "Game.h"
+#include "engine/Game.h"
 
 namespace kke {
     Game::Game(const std::string& name) : window(sf::VideoMode::getFullscreenModes()[0],

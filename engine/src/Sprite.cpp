@@ -2,7 +2,7 @@
 // Created by Severin on 06.03.2023.
 //
 
-#include "Sprite.h"
+#include "engine/Sprite.h"
 
 namespace kke {
     Sprite::Sprite(const sf::Texture &texture) : sprite(texture) {
