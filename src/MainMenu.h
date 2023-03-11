@@ -14,19 +14,12 @@ class MainMenu : public kke::Scene{
 public:
     explicit MainMenu(kke::Game& game) : kke::Scene(game){}
 
-    kke::Button* exitButton = nullptr;
-    kke::Button* playButton = nullptr;
+    std::unique_ptr<kke::Button> exitButton;
+    std::unique_ptr<kke::Button> playButton;
 
     void Construct() override{
-        camera.setSize(15 * 16, 12 * 16);
-
-        auto exitButtonPtr = std::make_unique<kke::Button>(0, 0, 100, 100, ui);
-        exitButton = exitButtonPtr.get();
-        root.AttachChild(std::move(exitButtonPtr));
-
-        auto playButtonPtr = std::make_unique<kke::Button>(100, 0, 100, 100, ui);
-        playButton = playButtonPtr.get();
-        root.AttachChild(std::move(playButtonPtr));
+        exitButton = std::make_unique<kke::Button>(0, 0, 100, 100, ui);
+        playButton = std::make_unique<kke::Button>(100, 0, 100, 100, ui);
     }
 
     void ProcessInputs() override{

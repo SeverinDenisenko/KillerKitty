@@ -15,7 +15,7 @@ namespace kke {
 
     class UI;
 
-    class Button : virtual public Entity{
+    class Button{
     public:
         Button(float x, float y, float w, float h, UI& ui);
 
