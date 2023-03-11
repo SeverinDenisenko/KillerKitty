@@ -12,12 +12,15 @@
 #include "Camera.h"
 #include "MusicPlayer.h"
 #include "UI.h"
+#include "Game.h"
 
 namespace kke {
 
+    class Game;
+
     class Scene {
     public:
-        explicit Scene(sf::RenderWindow& window);
+        explicit Scene(Game& game);
 
         void Run();
 
@@ -29,15 +32,16 @@ namespace kke {
         virtual ~Scene() = default;
 
     protected:
-        Entity root;
         CommandQueue<std::string> commandQueue;
         ResourceHolder<sf::Texture, std::string> textureHolder;
         EventSystem eventSystem;
         Camera camera;
         MusicPlayer musicPlayer;
         UI ui;
+        Entity root;
 
         bool Running = true;
+        Game& game;
 
         sf::Time deltaTime;
         sf::RenderWindow &window;

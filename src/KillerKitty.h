@@ -17,13 +17,11 @@ protected:
     void Setup() override{
         kke::Game::Setup();
 
-        sceneQueue.push(std::make_unique<MainMenu>(window));
-        sceneQueue.push(std::make_unique<TestScene>(window));
+        AddScene(std::make_unique<MainMenu>(*this));
     }
 
     void Shutdown() override{
         kke::Game::Shutdown();
-
     }
 };
 

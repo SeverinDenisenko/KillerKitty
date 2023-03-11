@@ -16,7 +16,7 @@
 
 class TestScene : public kke::Scene {
 public:
-    explicit TestScene(sf::RenderWindow& renderWindow) : kke::Scene(renderWindow){}
+    explicit TestScene(kke::Game& game) : kke::Scene(game){}
 
     kke::PhysicsEngine physicsEngine;
 

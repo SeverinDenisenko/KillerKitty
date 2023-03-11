@@ -20,6 +20,7 @@ namespace kke {
         Button(float x, float y, float w, float h, UI& ui);
 
         virtual void onPress();
+        bool pressed = false;
 
         friend class UI;
     private:

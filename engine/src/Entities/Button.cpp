@@ -10,6 +10,10 @@ namespace kke {
         element->setPosition(x, y);
         element->setSize(w, h);
         element->getRenderer()->setBackgroundColor(sf::Color(255, 255, 255, 255));
+        element->onPress([this]{
+            this->onPress();
+            this->pressed = true;
+        });
 
         ui.Register(*this);
     }

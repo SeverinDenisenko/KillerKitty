@@ -35,7 +35,7 @@ namespace kke {
         Deconstruct();
     }
 
-    Scene::Scene(sf::RenderWindow& window) : window(window), eventSystem(window), camera(window), ui(window) {
+    Scene::Scene(Game& game) : game(game), window(game.GetWindow()), eventSystem(game.GetWindow()), camera(game.GetWindow()), ui(game.GetWindow()) {
 
     }
 } // kke
