@@ -25,6 +25,9 @@ public:
 
         physicsEngine.timeMultiplier = 8;
 
+        musicPlayer.Load("music", "src/assets/music.mp3");
+        musicPlayer.Play("music");
+
         auto floor = std::make_unique<kke::RigidBody>(physicsEngine, false);
         floor->setPosition(0, 11 * 16);
         floor->setSize(6 * 16, 16);
