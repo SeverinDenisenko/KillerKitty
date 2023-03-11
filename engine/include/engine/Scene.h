@@ -11,7 +11,6 @@
 #include "EventSystem.h"
 #include "Camera.h"
 #include "MusicPlayer.h"
-#include "UI.h"
 #include "Game.h"
 
 namespace kke {
@@ -37,7 +36,6 @@ namespace kke {
         EventSystem eventSystem;
         Camera camera;
         MusicPlayer musicPlayer;
-        UI ui;
         Entity root;
 
         bool Running = true;

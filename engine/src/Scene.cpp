@@ -12,7 +12,6 @@ namespace kke {
             // Inputs
             eventSystem.Collect();
             ProcessInputs();
-            ui.ProcessEvents(eventSystem);
             eventSystem.Clear();
 
             // Update
@@ -28,14 +27,13 @@ namespace kke {
             // Render
             window.clear();
             window.draw(root);
-            ui.Render();
             window.display();
         }
 
         Deconstruct();
     }
 
-    Scene::Scene(Game& game) : game(game), window(game.GetWindow()), eventSystem(game.GetWindow()), camera(game.GetWindow()), ui(game.GetWindow()) {
+    Scene::Scene(Game& game) : game(game), window(game.GetWindow()), eventSystem(game.GetWindow()), camera(game.GetWindow()) {
 
     }
 } // kke
