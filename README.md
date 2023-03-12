@@ -9,11 +9,14 @@ My take on game development with sfml.
 * Resource management
 * Audio
 * Scenes
+* Physics and colliders system
+* UI
 
 ## What need to be done in code part
 
-* Physics and colliders system
-* UI
+* Level mechanics
+* More advanced colliders
+* Save system
 
 ## What need to be done in art part
 
@@ -26,4 +29,3 @@ My take on game development with sfml.
 * SFML
 * nlohmann json
 * box2d
-* TGUI
