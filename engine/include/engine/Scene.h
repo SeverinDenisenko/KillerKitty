@@ -5,7 +5,8 @@
 #ifndef KILLERKITTY_SCENE_H
 #define KILLERKITTY_SCENE_H
 
-#include "engine/Entities/Entity.h"
+#include "Entities/Entity.h"
+#include "UI/UIContainer.h"
 #include "CommandQueue.h"
 #include "ResourceHolder.h"
 #include "EventSystem.h"
@@ -33,10 +34,12 @@ namespace kke {
     protected:
         CommandQueue<std::string> commandQueue;
         ResourceHolder<sf::Texture, std::string> textureHolder;
+        ResourceHolder<sf::Font, std::string> fontHolder;
         EventSystem eventSystem;
         Camera camera;
         MusicPlayer musicPlayer;
-        Entity root;
+        Entity sceneRoot;
+        UIContainer uiRoot;
 
         bool Running = true;
         Game& game;

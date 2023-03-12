@@ -6,7 +6,7 @@
 #define KILLERKITTY_CHARACTER_H
 
 #include "engine/Entities/RigidBody.h"
-#include "engine/Sprite.h"
+#include "engine/Entities/Sprite.h"
 
 class Character : public kke::RigidBody, public kke::Sprite{
 public:

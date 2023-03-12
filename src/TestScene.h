@@ -7,7 +7,7 @@
 
 #include "engine/Scene.h"
 #include "engine/Entities/TileMap.h"
-#include "engine/Sprite.h"
+#include "engine/Entities/Sprite.h"
 #include "engine/PhysicsEngine.h"
 #include "engine/Entities/RigidBody.h"
 
@@ -33,43 +33,43 @@ public:
         floor->setSize(6 * 16, 16);
         floor->setCategory("Floor");
         floor->checkForCollisions = true;
-        root.AttachChild(std::move(floor));
+        sceneRoot.AttachChild(std::move(floor));
 
         auto floor2 = std::make_unique<kke::RigidBody>(physicsEngine, false);
         floor2->setPosition(0, 12 * 16);
         floor2->setSize(15 * 16, 16);
         floor2->setCategory("Floor");
         floor2->checkForCollisions = true;
-        root.AttachChild(std::move(floor2));
+        sceneRoot.AttachChild(std::move(floor2));
 
         auto floor3 = std::make_unique<kke::RigidBody>(physicsEngine, false);
         floor3->setPosition(16 * 16, 11 * 16);
         floor3->setSize(6 * 16, 16);
         floor3->setCategory("Floor");
         floor3->checkForCollisions = true;
-        root.AttachChild(std::move(floor3));
+        sceneRoot.AttachChild(std::move(floor3));
 
         auto floor4 = std::make_unique<kke::RigidBody>(physicsEngine, false);
         floor4->setPosition(17 * 16, 10 * 16);
         floor4->setSize(6 * 16, 16);
         floor4->setCategory("Floor");
         floor4->checkForCollisions = true;
-        root.AttachChild(std::move(floor4));
+        sceneRoot.AttachChild(std::move(floor4));
 
         auto wall1 = std::make_unique<kke::RigidBody>(physicsEngine, false);
         wall1->setPosition(-16, 0);
         wall1->setSize(0, 12 * 16);
-        root.AttachChild(std::move(wall1));
+        sceneRoot.AttachChild(std::move(wall1));
 
         auto wall2 = std::make_unique<kke::RigidBody>(physicsEngine, false);
         wall2->setPosition(15 * 16, 0);
         wall2->setSize(0, 12 * 16);
-        root.AttachChild(std::move(wall2));
+        sceneRoot.AttachChild(std::move(wall2));
 
         // Load textures and setup world
         textureHolder.Load("tiles", "src/assets/tiles.png");
 
-        root.AttachChild(std::make_unique<kke::TileMap>(textureHolder.get("tiles"), "src/assets/tilemap.tmj"));
+        sceneRoot.AttachChild(std::make_unique<kke::TileMap>(textureHolder.get("tiles"), "src/assets/tilemap.tmj"));
 
         auto character = std::make_unique<Character>(physicsEngine, textureHolder.get("tiles"), sf::IntRect(64, 32, 16, 16));
 
@@ -77,7 +77,7 @@ public:
         character->setPosition(1.0f, 1.0f);
         character->setSize(16.0f, 16.0f);
 
-        root.AttachChild(std::move(character));
+        sceneRoot.AttachChild(std::move(character));
     }
 
     void ProcessInputs() override{

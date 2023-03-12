@@ -12,6 +12,9 @@ namespace kke {
             // Inputs
             eventSystem.Collect();
             ProcessInputs();
+            for (auto& i: eventSystem.events) {
+                uiRoot.handleEvent(i);
+            }
             eventSystem.Clear();
 
             // Update
@@ -20,13 +23,14 @@ namespace kke {
             Update();
 
             while (!commandQueue.isEmpty())
-                root.onCommand(commandQueue.pop(), deltaTime);
+                sceneRoot.onCommand(commandQueue.pop(), deltaTime);
 
-            root.update(deltaTime);
+            sceneRoot.update(deltaTime);
 
             // Render
             window.clear();
-            window.draw(root);
+            window.draw(sceneRoot);
+            window.draw(uiRoot);
             window.display();
         }
 
