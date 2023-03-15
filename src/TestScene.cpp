@@ -13,43 +13,16 @@ void TestScene::Construct() {
     musicPlayer.Load("music", "src/assets/music.mp3");
     musicPlayer.Play("music");
 
-    auto floor = std::make_unique<kke::RigidBody>(physicsEngine, false);
-    floor->setPosition(0, 11 * 16);
-    floor->setSize(6 * 16, 16);
-    floor->setCategory("Floor");
-    floor->checkForCollisions = true;
-    sceneRoot.AttachChild(std::move(floor));
+    AddWall(-1, 0, 0, 10);
+    AddWall(15, 0, 0, 10);
 
-    auto floor2 = std::make_unique<kke::RigidBody>(physicsEngine, false);
-    floor2->setPosition(0, 12 * 16);
-    floor2->setSize(15 * 16, 16);
-    floor2->setCategory("Floor");
-    floor2->checkForCollisions = true;
-    sceneRoot.AttachChild(std::move(floor2));
-
-    auto floor3 = std::make_unique<kke::RigidBody>(physicsEngine, false);
-    floor3->setPosition(16 * 16, 11 * 16);
-    floor3->setSize(6 * 16, 16);
-    floor3->setCategory("Floor");
-    floor3->checkForCollisions = true;
-    sceneRoot.AttachChild(std::move(floor3));
-
-    auto floor4 = std::make_unique<kke::RigidBody>(physicsEngine, false);
-    floor4->setPosition(17 * 16, 10 * 16);
-    floor4->setSize(6 * 16, 16);
-    floor4->setCategory("Floor");
-    floor4->checkForCollisions = true;
-    sceneRoot.AttachChild(std::move(floor4));
-
-    auto wall1 = std::make_unique<kke::RigidBody>(physicsEngine, false);
-    wall1->setPosition(-16, 0);
-    wall1->setSize(0, 12 * 16);
-    sceneRoot.AttachChild(std::move(wall1));
-
-    auto wall2 = std::make_unique<kke::RigidBody>(physicsEngine, false);
-    wall2->setPosition(15 * 16, 0);
-    wall2->setSize(0, 12 * 16);
-    sceneRoot.AttachChild(std::move(wall2));
+    AddFloor(0, 11, 15, 0);
+    AddFloor(0, 10, 5.95, 0);
+    AddWall(6, 11, 0, 1);
+    AddWall(10, 11, 0, 1);
+    AddFloor(14, 10, 3.95, 0);
+    AddWall(11, 10, 0, 1);
+    AddFloor(15, 9, 3.95, 0);
 
     // Load textures and setup world
     textureHolder.Load("tiles", "src/assets/tiles.png");
@@ -100,4 +73,20 @@ void TestScene::ProcessInputs() {
 
 void TestScene::Update() {
     physicsEngine.Update(deltaTime);
+}
+
+void TestScene::AddWall(float x, float y, float w, float h) {
+    auto wall = std::make_unique<kke::RigidBody>(physicsEngine, false);
+    wall->setPosition(x * 16, y * 16);
+    wall->setSize(w * 16, h * 16);
+    sceneRoot.AttachChild(std::move(wall));
+}
+
+void TestScene::AddFloor(float x, float y, float w, float h) {
+    auto wall = std::make_unique<kke::RigidBody>(physicsEngine, false);
+    wall->setPosition(x * 16, y * 16);
+    wall->setSize(w * 16, h * 16);
+    wall->setCategory("Floor");
+    wall->checkForCollisions = true;
+    sceneRoot.AttachChild(std::move(wall));
 }

@@ -25,6 +25,11 @@ public:
     void ProcessInputs() override;
 
     void Update() override;
+
+private:
+    void AddWall(float x, float y, float w, float h);
+
+    void AddFloor(float x, float y, float w, float h);
 };
 
 
